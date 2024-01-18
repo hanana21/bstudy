@@ -1,16 +1,15 @@
-import sys
-from itertools import combinations
-
-input = sys.stdin.readline
-n,s = map(int,input().split())
+N,S = map(int,input().split())
 array = list(map(int,input().split()))
-count = 0
+anser=0
 
-for i in range(1,n+1):
-    combi = combinations(array,i) #튜플 형태의 리스트 반환  
-    for j in combi:
-        if sum(j) == s: count += 1
-print(count)
+def search(n,s,count):
+    global anser
+    if n == N:
+        if s == S and count>0: #크기가 양수여야 count>0 들어간 갯수 체크
+            anser += 1
+        return 
+    search(n+1,s+array[n],count+1) # 현재 값을 포함하여 더하는경우
+    search(n+1,s,count)# 현재 값 포함X
 
-    
-
+search(0,0,0)
+print(anser)
