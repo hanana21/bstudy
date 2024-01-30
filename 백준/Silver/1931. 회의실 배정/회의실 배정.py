@@ -1,4 +1,6 @@
 #회의실 배정하기
+import sys
+input = sys.stdin.readline
 N = int(input())
 times= []
 for i in range(N):
