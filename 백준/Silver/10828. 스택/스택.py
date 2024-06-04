@@ -1,27 +1,53 @@
-import sys
-stack = []
-input = sys.stdin.readline
-n=int(input())
+# 스택 
+s = []
 
-for i in range(n):
-    input_data = input().split()
-    if input_data[0] =='push' :
-        stack.append(input_data[1])
-    elif input_data[0] == 'pop':
-        if len(stack) == 0:
-            print (-1)
-        else:
-            print(stack.pop())
-    elif input_data[0] == 'size':
-        print(len(stack))
-    elif input_data[0] == 'empty':
-        if len(stack) == 0:
-            print(1)
-        else:
-            print(0)
-    elif input_data[0] == 'top':
-        if len(stack) == 0:
-            print (-1)
-        else:
-            print(stack[-1])
+def push(num):
+    s.append(num)
+
+def pop():
+    if not s:
+        print(-1)
+    else:
+        outdata = s.pop()
+        print(outdata)
+
+def size():
+    print(len(s))
+
+def empty():
+    if not s:
+        print(1)
+    else:
+        print(0)
+
+def top():
+    if not s:
+        print(-1)
+    else:
+        print(s[-1])
+
+
+N = int(input())
+
+for _ in range(N):
+    data = input().split()
+    order = data[0]
+    num = 0
+    if len(data) == 2:
+        num = int(data[1])
+
+    if order == 'push':
+        push(num)
+    elif order == 'pop':
+        pop()
+    elif order == 'size':
+        size()
+    elif order == 'empty':
+        empty()
+    else:
+        top()
+
+
+
+
 
