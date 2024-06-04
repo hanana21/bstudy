@@ -1,4 +1,6 @@
 # 스택 
+import sys
+input = sys.stdin.readline
 s = []
 
 def push(num):
