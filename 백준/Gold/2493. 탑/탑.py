@@ -8,10 +8,9 @@ ans = [0]*n
 stack = []
 
 for i in range(n):
-    while stack and stack[-1][0] < top[i]:
+    while stack and top[stack[-1]] < top[i]:
         stack.pop()
     if stack:
-        ans[i] = stack[-1][1]
-    stack.append([top[i],i+1])
-
+        ans[i] = stack[-1]+1
+    stack.append(i)
 print(*ans)
