@@ -1,21 +1,17 @@
+# 탑 
+import sys
+input = sys.stdin.readline
+
 n = int(input())
 top = list(map(int,input().split()))
+ans = [0]*n
 stack = []
-anser=[0 for i in range(n)]
 
-for i in range(len(top)):
-    while stack:
-        if stack[-1][1] > top[i]:
-            anser[i] = stack[-1][0]+1
-            break
-        else:
-            stack.pop()
-    stack.append([i,top[i]])
-print(*anser)
+for i in range(n):
+    while stack and stack[-1][0] < top[i]:
+        stack.pop()
+    if stack:
+        ans[i] = stack[-1][1]
+    stack.append([top[i],i+1])
 
-
-              
-
-        
-
-
+print(*ans)
