@@ -1,32 +1,53 @@
-from collections import deque
+# 큐 2
 import sys
-queue = deque()
+from collections import deque
 input = sys.stdin.readline
-n = int(input())
+d = deque()
 
-for i in range(n):
-    input_data = input().split()
-    if input_data[0] == 'push':
-        queue.append(int(input_data[1]))
-    elif input_data[0] == 'pop':
-        if len(queue) == 0:
-            print(-1)
-        else:
-            print(queue.popleft())
-    elif input_data[0] == 'size':
-        print(len(queue))
-    elif input_data[0] == 'empty':
-        if len(queue) == 0:
-            print(1)
-        else:
-            print(0)
-    elif input_data[0] == 'front':
-        if len(queue) == 0:
-            print(-1)
-        else:
-            print(queue[0])
-    elif input_data[0] == 'back':
-        if len(queue) == 0:
-            print(-1)
-        else:
-            print(queue[-1])
+def push(data):
+    d.append(data)
+
+def pop():
+    if not d:
+        print(-1)
+    else:
+        front = d.popleft()
+        print(front)
+
+def size():
+    print(len(d))
+
+def empty():
+    if not d:
+        print(1)
+    else:
+        print(0)
+
+def front():
+    if not d:
+        print(-1)
+    else:
+        print(d[0])
+
+def back():
+    if not d:
+        print(-1)
+    else:
+        print(d[-1])
+
+
+N = int(input())
+for _ in range(N):
+    order = input().split()
+    if order[0] == 'push':
+        push(order[1])
+    elif order[0] == 'pop':
+        pop()
+    elif order[0] == 'size':
+        size()
+    elif order[0] == 'empty':
+        empty()
+    elif order[0] == 'front':
+        front()
+    else:
+        back()
