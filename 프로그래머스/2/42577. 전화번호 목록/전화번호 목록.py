@@ -1,10 +1,8 @@
 def solution(phone_book):
-    answer = True
-    phone_book_set = set(phone_book)
+    sorted_phone_book = sorted(phone_book)
     
-    for number in phone_book:
-        for i in range(1, len(number)):
-            if number[:i] in phone_book_set:
-                answer = False
-                return answer
-    return answer
+    for p1,p2 in zip(sorted_phone_book,sorted_phone_book[1:]):
+        if p2.startswith(p1):
+            return False
+    
+    return True
